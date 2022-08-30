@@ -4,7 +4,7 @@ import CardList from './CardList'
 import SearchBox from './SearchBox'
 import './App.css';
 import Scroll from './Scroll'
-
+import ErrorBoundry from './ErrorBoundry';
 
 //?-- Dito muna dineclare ni andrei saka nilagay sa this.state
 // const state = {
@@ -51,8 +51,10 @@ class App extends Component {
                 <div className='tc'>
                     <h1 className='f1'>Facebot</h1>
                     <SearchBox searchChange = { this.onSearchChange }/>
-                    <Scroll> 
-                        <CardList robots1 = { filteredRobots }/>
+                    <Scroll>
+                        <ErrorBoundry>
+                            <CardList robots1 = { filteredRobots }/>
+                        </ErrorBoundry>
                     </Scroll>
                 </div>
             );
